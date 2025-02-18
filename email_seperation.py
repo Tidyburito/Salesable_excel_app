@@ -18,6 +18,6 @@ df = load_data()
 
 search_variable  = st.text_input("Enter gmail to search")
 
-filtered_df = df[df['Email'].str.contains(search_variable, na=False)]
+filtered_df = df[df['Email'].str.contains(search_variable, na=False, case=False)]
 
 st.dataframe(filtered_df, use_container_width=True)
