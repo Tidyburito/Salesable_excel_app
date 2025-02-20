@@ -14,7 +14,7 @@ search_variable = st.text_input("Enter a name")
 matched_column = []
 for column in df.columns:
     if df[column].dtype == object:  # Ensures we're only searching in text columns
-        if df[column].str.contains(search_variable, na=False).any():
+        if df[column].str.contains(search_variable, na=False, case=False).any():
             matched_column.append(column)
 
 if not matched_column:  # Check if the list is empty
@@ -22,5 +22,5 @@ if not matched_column:  # Check if the list is empty
 else:
     for i in matched_column:
         st.write(f'Matches in {i} column')
-        filtered_df = df[df[i].str.contains(search_variable, na=False)]
+        filtered_df = df[df[i].str.contains(search_variable, na=False, case=False)]
         st.dataframe(filtered_df, use_container_width=True)
